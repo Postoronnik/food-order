@@ -1,15 +1,39 @@
-import React from "react";
-import HeaderCartButtonStyled from "../../../UI/Button/Header/HeaderCartButton.styled";
+import React, {useContext, useEffect, useState} from "react";
 import {IconStyled} from "./Icon/Icon.styled";
-import Counter from "./Counter/Counter";
+import * as Styles from './HeaderCartButton.styled'
+import ItemContext from "../../../contexts/item-context";
+import CartWindowContext from "../../../contexts/cartWindow-context";
 
 const HeaderCartButton = () => {
+    const menuItemContext = useContext(ItemContext);
+    const cartWindowContext = useContext(CartWindowContext);
+
+    const [itemsAmount, setItemsAmount] = useState(0);
+
+    const openCartWindowHandler = () => {
+        cartWindowContext.openCartWindow();
+    };
+
+    useEffect(() => {
+        if(menuItemContext.items.length === 0) {
+            setItemsAmount(0);
+            return;
+        }
+        setItemsAmount(menuItemContext
+            .items
+            .map(({amount}) => parseInt(amount))
+                .reduce((a,b) => a + b)
+        );
+    },[menuItemContext]);
+
     return (
-        <HeaderCartButtonStyled>
+        <Styles.CartButton onClick={openCartWindowHandler}>
             <IconStyled/>
             <label>Your Cart</label>
-            <Counter/>
-        </HeaderCartButtonStyled>
+            <Styles.Counter>
+                <label>{itemsAmount}</label>
+            </Styles.Counter>
+        </Styles.CartButton>
     );
 }
 

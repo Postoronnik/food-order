@@ -1,6 +1,5 @@
 import React from "react";
-import * as HeaderStyles from './Header.styled';
-import * as ImageStyles from './Image.styled';
+import * as Styles from './Header.styled';
 import logo from '../../assets/meals.png';
 import {HeaderCard} from "../wrapers/HeaderCard.styled";
 import HeaderCartButton from "./HeaderCartButton/HeaderCartButton";
@@ -8,11 +7,11 @@ import HeaderCartButton from "./HeaderCartButton/HeaderCartButton";
 const Header = () => {
     return (
         <HeaderCard>
-            <HeaderStyles.HeaderStyle>
+            <Styles.Header>
                 <label>ReactMeals</label>
                 <HeaderCartButton/>
-            </HeaderStyles.HeaderStyle>
-            <ImageStyles.ImageStyled src={logo} alt={"Logo"}/>
+            </Styles.Header>
+            <Styles.Image src={logo} alt={"Logo"}/>
         </HeaderCard>
     )};
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderStyle = styled.header`
+export const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -19,4 +19,14 @@ export const HeaderStyle = styled.header`
     font-size: 30px;
     font-weight: bold;
   }
+`;
+
+export const Image = styled.img`
+  height: 20rem;
+  z-index: 0;
+  overflow: hidden;
+  
+  width: 110%;
+  object-fit: cover;
+  transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
 `;

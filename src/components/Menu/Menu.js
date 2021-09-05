@@ -1,7 +1,8 @@
 import React from "react";
-import {MenuStyled} from "./Menu.styled";
 import MenuItem from "./MenuItem/MenuItem";
 import {v4 as uuid4} from 'uuid';
+import {MenuWindowStyled} from "./MenuWindow.styled";
+
 
 const menuItemList = [
     {
@@ -12,26 +13,26 @@ const menuItemList = [
     },
     {
         key : uuid4(),
-        name : 'Sushi',
+        name : 'Sushi-1',
         description : 'Finest fish and veggies',
-        price : 100,
+        price : 150,
     },
 ];
-console.log(menuItemList.map(menuItem => menuItem.key));
 
 
 const Menu = () => {
   return (
-      <MenuStyled>
+      <MenuWindowStyled>
           {menuItemList.map(menuItem =>
               <MenuItem
                   key = {menuItem.key}
+                  itemKey = {menuItem.key}
                   name={menuItem.name}
                   description={menuItem.description}
                   price={menuItem.price}
               />
           )}
-      </MenuStyled>
+      </MenuWindowStyled>
   );
 };
 
